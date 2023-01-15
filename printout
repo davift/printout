@@ -1,0 +1,38 @@
+printout() {
+    local color=$1
+    local message=$2
+    local format=""
+    local bg_color=""
+    case $color in
+        red) color=31;;
+        green) color=32;;
+        yellow) color=33;;
+        purple) color=35;;
+        cyan) color=36;;
+        black) color=30;;
+        white) color=37;;
+        pink) color=95;;
+        grey) color=90;;
+    esac
+    
+    shift 2
+    for i in "$@"
+    do
+        case $i in
+            bold) format+="1;";;
+            italic) format+="3;";;
+            underline) format+="4;";;
+            bg_red) bg_color="41;";;
+            bg_green) bg_color="42;";;
+            bg_yellow) bg_color="43;";;
+            bg_purple) bg_color="45;";;
+            bg_cyan) bg_color="46;";;
+            bg_black) bg_color="40;";;
+            bg_white) bg_color="47;";;
+            bg_pink) bg_color="105;";;
+            bg_grey) bg_color="100;";;
+        esac
+    done
+    
+    echo -e " \033[${bg_color}${format}${color}m[ $message ]\033[0m "
+}
