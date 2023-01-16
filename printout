@@ -1,27 +1,27 @@
 printout() {
-    local color=$1
-    local message=$2
+    local message=$1
+    local color=""
     local format=""
     local bg_color=""
-    case $color in
-        red) color=31;;
-        green) color=32;;
-        yellow) color=33;;
-        purple) color=35;;
-        cyan) color=36;;
-        black) color=30;;
-        white) color=37;;
-        pink) color=95;;
-        grey) color=90;;
-    esac
-    
-    shift 2
+
+    shift 1
     for i in "$@"
     do
         case $i in
             bold) format+="1;";;
             italic) format+="3;";;
             underline) format+="4;";;
+
+            red) color="31";;
+            green) color="32";;
+            yellow) color="33";;
+            purple) color="35";;
+            cyan) color="36";;
+            black) color="30";;
+            white) color="37";;
+            pink) color="95";;
+            grey) color="90";;
+
             bg_red) bg_color="41;";;
             bg_green) bg_color="42;";;
             bg_yellow) bg_color="43;";;
@@ -31,6 +31,10 @@ printout() {
             bg_white) bg_color="47;";;
             bg_pink) bg_color="105;";;
             bg_grey) bg_color="100;";;
+
+            *) echo "Invalid input: $i"
+               return 1
+               ;;
         esac
     done
     
