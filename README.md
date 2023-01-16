@@ -4,6 +4,13 @@
 
 Printout is a Bash script function designed to enhance the visual appeal of CLI output in automation scripts by incorporating color and formatting options.
 
+## Installation
+
+Navigate to the directory of the automation scripts and download it.
+```
+wget https://raw.githubusercontent.com/davift/printout/main/printout
+```
+
 ## Example of Usage
 
 ```
